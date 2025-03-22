@@ -1,9 +1,17 @@
 import {Request, Response} from "express";
+import { registerSchema } from "../validations/registerValidation.js";
 
-class Register {
+class RegisterController {
+
     static async register(req: Request, res: Response){
-        const body = req.body;
+        try {
+            const body = req.body;
+            const payload = registerSchema.parse(body);
+            res.json({message: "User registered successfully", data: payload});
+        } catch (error) {
+            res.status(400).json({message: error});
+        }
     }
 }
 
-export default Register;
+export default RegisterController

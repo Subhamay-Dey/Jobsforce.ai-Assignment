@@ -5,6 +5,7 @@ import path from "path";
 import {fileURLToPath} from "url";
 import ejs from "ejs";
 import { EmailQueue, EmailQueueName } from "./bull/jobs/EmailQueue.js";
+import Routes from "./routes/index.js";
 
 const app:Application = express();
 
@@ -17,6 +18,8 @@ app.use(express.urlencoded({extended: true}));
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 app.set("view engine", "ejs");
 app.set("views", path.resolve(__dirname, "./views"));
+
+app.use("/api",Routes);
 
 app.get("/", async(req: Request, res: Response) => {
 
