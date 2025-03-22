@@ -9,7 +9,7 @@ interface LoginPayloadType {
     oauth_id:string;
 }
 
-class AuthController {
+export default class AuthController {
 
     static async login(req: Request, res: Response){
         try {
@@ -52,5 +52,3 @@ class AuthController {
         }
     }
 }
-
-export default AuthController;
