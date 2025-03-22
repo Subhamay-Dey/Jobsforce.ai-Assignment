@@ -18,4 +18,6 @@ app.get("/", async (req, res) => {
     await sendEmail("ncdey1966@gmail.com", "Testing", html);
     res.json({ message: "Email sent successfully" });
 });
+// // Queues
+import "./bull/jobs/index.js";
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

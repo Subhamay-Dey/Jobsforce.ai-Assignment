@@ -4,8 +4,7 @@ import "dotenv/config";
 import path from "path";
 import {fileURLToPath} from "url";
 import ejs from "ejs";
-import { sendEmail } from "./mails/mail.js";
-
+import { EmailQueue, EmailQueueName } from "./bull/jobs/EmailQueue.js";
 
 const app:Application = express();
 
@@ -23,9 +22,11 @@ app.get("/", async(req: Request, res: Response) => {
 
     const html = await ejs.renderFile(__dirname + `/views/emails/welcome.ejs`, {name:"Subhamay Dey"})
 
-    await sendEmail("ncdey1966@gmail.com", "Testing", html);
+    await EmailQueue.add(EmailQueueName, {to: "ncdey1966@gmail.com", subject: "Testing", html: html});
 
     res.json({message: "Email sent successfully"});
 })
+// // Queues
+import "./bull/jobs/index.js"
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
