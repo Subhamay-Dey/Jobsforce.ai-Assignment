@@ -6,6 +6,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 
 interface JobListing {
+  id: string;
   title: string;
   date_posted: string;
   organization: string;
@@ -70,9 +71,15 @@ const JobListings = () => {
               <p className="text-sm text-gray-700 font-semibold">Seniority: {job.seniority}</p>
               <p className="text-sm text-gray-700 font-semibold">Employment Type: {job.employment_type.join(", ")}</p>
             </div>
+            <div className="flex justify-between items-center">
                 <Link href={job.url} target="_blank" rel="noopener noreferrer" >
                   <Button className="mt-3 cursor-pointer">View Job</Button>
                 </Link>
+
+                <Link href={`/ai-mock-interview/${job.title}/${job.id}`}>
+                  <Button className="cursor-pointer mt-3">Ai Interview</Button>
+                </Link>
+            </div>
           </div>
         ))}
       </div>
