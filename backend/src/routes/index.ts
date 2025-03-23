@@ -1,6 +1,6 @@
 import {Router} from "express";
 import JobListing from "../controllers/JobListing.js";
-import {AiInterview} from "../controllers/AiInterview.js";
+import AiInterview from "../controllers/AiInterview.js";
 
 const router = Router();
 
@@ -13,6 +13,49 @@ router.get("/ai-interview/:jobId", AiInterview.getAiInterviewQuestions);
 export default router;
 
 
-import AuthController from "../controllers/AuthController.js";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import AuthController from "../controllers/AuthController.js";
 // Auth Route
 // router.post("/auth/login", AuthController.login);

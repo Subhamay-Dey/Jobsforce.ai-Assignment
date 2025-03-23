@@ -76,7 +76,7 @@ const JobListings = () => {
                   <Button className="mt-3 cursor-pointer">View Job</Button>
                 </Link>
 
-                <Link href={`/ai-mock-interview/${job.title}/${job.id}`}>
+                <Link href={`/ai-mock-interview/${job.id}`}>
                   <Button className="cursor-pointer mt-3">Ai Interview</Button>
                 </Link>
             </div>
