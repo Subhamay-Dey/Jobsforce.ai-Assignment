@@ -1,21 +1,24 @@
 import axios from "axios";
+import { v4 as uuidv4 } from 'uuid';
+import { mockJobListings } from "../jobs/JobListing.js";
 class JobListing {
     static async getJobListings(req, res) {
         try {
-            const { query = '', location = '', page = '1', limit = '20' } = req.query;
-            const joblisting = await axios.get("https://upwork-jobs-api2.p.rapidapi.com/active-freelance-7d?search=%22Data%20Engineer%22&location_filter=%22United%20States%22", {
-                params: {
-                    query: query,
-                    page: page,
-                    num_pages: limit,
-                    location: location
-                },
-                headers: {
-                    'X-RapidAPI-Key': process.env.RAPID_API_KEY,
-                    'X-RapidAPI-Host': process.env.RAPID_API_HOST,
-                }
-            });
-            res.json(joblisting.data);
+            const filteredJobListings = mockJobListings.map((job) => ({
+                id: uuidv4(),
+                title: job.title,
+                date_posted: job.date_posted,
+                organization: job.organization,
+                employment_type: job.employment_type,
+                url: job.url,
+                organization_logo: job.organization_logo,
+                locations_derived: job.locations_derived,
+                timezones_derived: job.timezones_derived,
+                linkedin_org_description: job.linkedin_org_description,
+                seniority: job.seniority
+            }));
+            console.log(filteredJobListings);
+            res.json(filteredJobListings);
         }
         catch (error) {
             console.error('Error fetching jobs:', error);
