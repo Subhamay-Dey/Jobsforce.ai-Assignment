@@ -171,7 +171,8 @@ const AiMockInterview = () => {
               <tr 
                 key={question.id} 
                 className={`border-b hover:bg-gray-50 cursor-pointer ${idx % 2 === 1 ? 'bg-gray-50' : ''}`}
-                onClick={() => setSelectedQuestion(question)}
+                // onClick={() => setSelectedQuestion(question)}
+                onClick={() => window.open(`/ai-mock-interview/dsa/${question.title.replace(/\s+/g, "-")}`,`_blank`)}
               >
                 <td className="px-2 py-4 text-center">
                   {question.status === "solved" ? (
