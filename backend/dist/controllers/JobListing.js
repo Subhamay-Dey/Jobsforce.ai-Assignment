@@ -1,11 +1,10 @@
 import axios from "axios";
-import { v4 as uuidv4 } from 'uuid';
 import { mockJobListings } from "../jobs/JobListing.js";
 class JobListing {
     static async getJobListings(req, res) {
         try {
             const filteredJobListings = mockJobListings.map((job) => ({
-                id: uuidv4(),
+                id: job.id,
                 title: job.title,
                 date_posted: job.date_posted,
                 organization: job.organization,
@@ -17,7 +16,7 @@ class JobListing {
                 linkedin_org_description: job.linkedin_org_description,
                 seniority: job.seniority
             }));
-            console.log(filteredJobListings);
+            // console.log(filteredJobListings);
             res.json(filteredJobListings);
         }
         catch (error) {

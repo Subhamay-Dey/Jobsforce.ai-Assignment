@@ -22,7 +22,7 @@ class JobListing {
         try {
 
             const filteredJobListings: FilteredJobListing[] = mockJobListings.map((job: any) => ({
-              id: uuidv4(),
+              id: job.id,
               title: job.title,
               date_posted: job.date_posted,
               organization: job.organization,
@@ -35,7 +35,7 @@ class JobListing {
               seniority: job.seniority
               }));
 
-            console.log(filteredJobListings);
+            // console.log(filteredJobListings);
             
             res.json(filteredJobListings);
 

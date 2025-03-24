@@ -1,4 +1,3 @@
-// controllers/AiDsaGenerate.ts
 import axios from "axios";
 class AiDsaGenerate {
     static async generateQuestions(jobInfo) {

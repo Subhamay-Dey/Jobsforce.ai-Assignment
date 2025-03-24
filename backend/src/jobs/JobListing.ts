@@ -1,8 +1,8 @@
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 
 export const mockJobListings = [
   {
-    id: uuidv4(),
+    id: "645756835",
     title: "Senior Data Engineer",
     date_posted: "2025-03-15",
     organization: "Amazon",
@@ -15,7 +15,7 @@ export const mockJobListings = [
     seniority: "Senior"
   },
   {
-    id: uuidv4(),
+    id: "4565834522",
     title: "Data Engineer II",
     date_posted: "2025-03-17",
     organization: "Microsoft",
@@ -28,7 +28,7 @@ export const mockJobListings = [
     seniority: "Mid-Senior"
   },
   {
-    id: uuidv4(),
+    id: "769789067756",
     title: "Principal Data Engineer",
     date_posted: "2025-03-10",
     organization: "Google",
@@ -41,7 +41,7 @@ export const mockJobListings = [
     seniority: "Principal"
   },
   {
-    id: uuidv4(),
+    id: "743958036249856",
     title: "Associate Data Engineer",
     date_posted: "2025-03-19",
     organization: "Facebook",
@@ -54,7 +54,7 @@ export const mockJobListings = [
     seniority: "Entry"
   },
   {
-    id: uuidv4(),
+    id: "9457893227",
     title: "Data Engineer",
     date_posted: "2025-03-12",
     organization: "Netflix",
@@ -67,7 +67,7 @@ export const mockJobListings = [
     seniority: "Mid-Level"
   },
   {
-    id: uuidv4(),
+    id: "9758974265897",
     title: "Lead Data Engineer",
     date_posted: "2025-03-05",
     organization: "Apple",
@@ -80,7 +80,7 @@ export const mockJobListings = [
     seniority: "Lead"
   },
   {
-    id: uuidv4(),
+    id: "9834758796592",
     title: "Data Engineer - Remote",
     date_posted: "2025-03-18",
     organization: "Twitter",
@@ -93,7 +93,7 @@ export const mockJobListings = [
     seniority: "Mid-Level"
   },
   {
-    id: uuidv4(),
+    id: "98437578926",
     title: "Senior Data Engineer",
     date_posted: "2025-03-14",
     organization: "Salesforce",
@@ -106,7 +106,7 @@ export const mockJobListings = [
     seniority: "Senior"
   },
   {
-    id: uuidv4(),
+    id: "058798489679",
     title: "Data Engineer",
     date_posted: "2025-03-16",
     organization: "Uber",
@@ -119,7 +119,7 @@ export const mockJobListings = [
     seniority: "Mid-Level"
   },
   {
-    id: uuidv4(),
+    id: "9874872367486589",
     title: "Data Engineer III",
     date_posted: "2025-03-08",
     organization: "Adobe",
@@ -132,7 +132,7 @@ export const mockJobListings = [
     seniority: "Senior"
   },
   {
-    id: uuidv4(),
+    id: "6547724547454",
     title: "Data Engineer",
     date_posted: "2025-03-20",
     organization: "IBM",
@@ -145,7 +145,7 @@ export const mockJobListings = [
     seniority: "Mid-Level"
   },
   {
-    id: uuidv4(),
+    id: "4987682687168",
     title: "Senior Data Engineer",
     date_posted: "2025-03-09",
     organization: "Oracle",
@@ -158,7 +158,7 @@ export const mockJobListings = [
     seniority: "Senior"
   },
   {
-    id: uuidv4(),
+    id: "6548979871",
     title: "Data Engineer",
     date_posted: "2025-03-14",
     organization: "Intel",
@@ -171,7 +171,7 @@ export const mockJobListings = [
     seniority: "Mid-Level"
   },
   {
-    id: uuidv4(),
+    id: "4356834789",
     title: "Cloud Data Engineer",
     date_posted: "2025-03-15",
     organization: "Cisco",
@@ -184,7 +184,7 @@ export const mockJobListings = [
     seniority: "Mid-Level"
   },
   {
-    id: uuidv4(),
+    id: "83298473285698758",
     title: "Senior Data Engineer",
     date_posted: "2025-03-18",
     organization: "Disney",
@@ -197,7 +197,7 @@ export const mockJobListings = [
     seniority: "Senior"
   },
   {
-    id: uuidv4(),
+    id: "98745893478573458920",
     title: "Data Engineer - Remote",
     date_posted: "2025-03-16",
     organization: "Shopify",
@@ -210,7 +210,7 @@ export const mockJobListings = [
     seniority: "Mid-Level"
   },
   {
-    id: uuidv4(),
+    id: "2457798789179",
     title: "Principal Data Engineer",
     date_posted: "2025-03-10",
     organization: "Airbnb",
@@ -223,7 +223,7 @@ export const mockJobListings = [
     seniority: "Principal"
   },
   {
-    id: uuidv4(),
+    id: "0837454687463",
     title: "Data Engineer",
     date_posted: "2025-03-19",
     organization: "Nvidia",
@@ -236,7 +236,7 @@ export const mockJobListings = [
     seniority: "Mid-Level"
   },
   {
-    id: uuidv4(),
+    id: "654567872987",
     title: "Senior Data Engineer",
     date_posted: "2025-03-12",
     organization: "PayPal",
@@ -249,7 +249,7 @@ export const mockJobListings = [
     seniority: "Senior"
   },
   {
-    id: uuidv4(),
+    id: "6548678917981798",
     title: "Data Engineer - London",
     date_posted: "2025-03-15",
     organization: "Bloomberg",
@@ -262,7 +262,7 @@ export const mockJobListings = [
     seniority: "Mid-Level"
   },
   {
-    id: uuidv4(),
+    id: "834589364635",
     title: "Big Data Engineer",
     date_posted: "2025-03-17",
     organization: "Spotify",
@@ -275,7 +275,7 @@ export const mockJobListings = [
     seniority: "Mid-Level"
   },
   {
-    id: uuidv4(),
+    id: "3485896349857",
     title: "Lead Data Engineer",
     date_posted: "2025-03-11",
     organization: "Slack",
@@ -288,7 +288,7 @@ export const mockJobListings = [
     seniority: "Lead"
   },
   {
-    id: uuidv4(),
+    id: "348538273458340256986249",
     title: "Data Engineer",
     date_posted: "2025-03-18",
     organization: "Twitch",
@@ -301,7 +301,7 @@ export const mockJobListings = [
     seniority: "Mid-Level"
   },
   {
-    id: uuidv4(),
+    id: "9846846598037405734",
     title: "Senior Data Engineer",
     date_posted: "2025-03-09",
     organization: "Snap Inc.",
@@ -314,7 +314,7 @@ export const mockJobListings = [
     seniority: "Senior"
   },
   {
-    id: uuidv4(),
+    id: "937587465879347593",
     title: "Data Engineer",
     date_posted: "2025-03-20",
     organization: "Lyft",
@@ -327,7 +327,7 @@ export const mockJobListings = [
     seniority: "Mid-Level"
   },
   {
-    id: uuidv4(),
+    id: "3456789719871987",
     title: "Data Engineer - London",
     date_posted: "2025-03-14",
     organization: "Deliveroo",
@@ -340,7 +340,7 @@ export const mockJobListings = [
     seniority: "Mid-Level"
   },
   {
-    id: uuidv4(),
+    id: "5349878971897",
     title: "Senior Data Engineer",
     date_posted: "2025-03-06",
     organization: "Atlassian",
@@ -353,7 +353,7 @@ export const mockJobListings = [
     seniority: "Senior"
   },
   {
-    id: uuidv4(),
+    id: "246576729777",
     title: "Data Engineer",
     date_posted: "2025-03-19",
     organization: "Dropbox",
@@ -366,7 +366,7 @@ export const mockJobListings = [
     seniority: "Mid-Level"
   },
   {
-    id: uuidv4(),
+    id: "874365734265453",
     title: "Principal Data Engineer",
     date_posted: "2025-03-07",
     organization: "Pinterest",
@@ -379,7 +379,7 @@ export const mockJobListings = [
     seniority: "Principal"
   },
   {
-    id: uuidv4(),
+    id: "493758346578478562198374",
     title: "Data Engineer II",
     date_posted: "2025-03-13",
     organization: "Zoom",
