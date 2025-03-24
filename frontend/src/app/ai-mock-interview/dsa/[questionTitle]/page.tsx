@@ -3,8 +3,8 @@ import React from 'react'
 
 function page() {
   return (
-    <div>This is the dsa question page.
-        <DsaQuestion/>
+    <div>
+      <DsaQuestion/>
     </div>
   )
 }

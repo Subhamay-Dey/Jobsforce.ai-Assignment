@@ -33,10 +33,10 @@ router.get("/ai-interview/:jobId", async (req, res) => {
                 },
                 {
                     role: "user",
-                    content: `Generate 10 DSA LeetCode style questions for a ${jobInfo.seniority} ${jobInfo.title} position at ${jobInfo.organization}. 
+                    content: `Generate 10 LeetCode DSA questions for a ${jobInfo.seniority} ${jobInfo.title} position at ${jobInfo.organization}. 
                         Include 3 easy, 5 medium, and 2 hard questions. For each question, provide a title, difficulty, description, examples, and constraints.
                         The job description is: ${jobInfo.description}
-                        
+                        INSTRUCTIONS: Do not change the name of the leetcode question, give the accurate title of the dsa question.
                         Format:
                         \`\`\`json
                         {
