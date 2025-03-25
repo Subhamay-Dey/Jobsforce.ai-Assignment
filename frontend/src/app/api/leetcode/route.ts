@@ -35,7 +35,7 @@ export async function GET(req: Request) {
         return Response.json({
           id: data.data.question.questionId,
           title: data.data.question.title,
-          description: data.data.question.content, // Full problem description
+          description: data.data.question.content,
           difficulty: data.data.question.difficulty,
         });
       } else {

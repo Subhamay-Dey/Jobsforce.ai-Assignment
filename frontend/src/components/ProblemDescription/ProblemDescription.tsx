@@ -23,12 +23,11 @@ function ProblemDescription({ questionTitle }: { questionTitle: any }) {
         
         const data = await response.json();
         if (data.description) {
-          // Convert HTML to Markdown format
+
           const markdown = htmlToMd(data.description);
           setDescription(markdown);
           
-          // Optional: Set difficulty based on API response or default
-          setDifficulty(data.difficulty || 'Medium');
+          setDifficulty(data.difficulty);
         } else {
           setDescription("Problem not found.");
         }
