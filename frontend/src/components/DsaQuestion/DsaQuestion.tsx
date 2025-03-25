@@ -12,11 +12,11 @@ function DsaQuestion() {
   const {questionTitle} = useParams();
   return (
       <Split 
-      sizes={[30, 70]}
+      sizes={[28, 72]}
       className={styles.split}
       >
           <ProblemDescription questionTitle={questionTitle}/>
-          <EditorHome/>
+          <EditorHome title={questionTitle}/>
       </Split>
 
   )

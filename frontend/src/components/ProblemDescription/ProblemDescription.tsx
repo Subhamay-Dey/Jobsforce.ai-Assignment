@@ -23,7 +23,6 @@ function ProblemDescription({ questionTitle }: { questionTitle: any }) {
         
         const data = await response.json();
         if (data.description) {
-
           const markdown = htmlToMd(data.description);
           setDescription(markdown);
           
