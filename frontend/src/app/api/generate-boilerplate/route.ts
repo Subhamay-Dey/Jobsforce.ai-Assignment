@@ -23,7 +23,7 @@ export async function POST(req: Request) {
       - Matches the input/output structure from test cases.
       - Follows best practices in ${language}.
       - Includes a function signature with correct parameters.
-      - Has a TODO comment for implementation.
+      - Has a TODO comment for implementation with mentioning the current language
       - DOES NOT include the implementation.
       - Do not wrap the whole code in backticks.
       - Only return the function signature and necessary documentation.
