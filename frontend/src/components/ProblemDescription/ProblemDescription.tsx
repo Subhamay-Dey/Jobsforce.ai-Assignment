@@ -42,7 +42,7 @@ function ProblemDescription({ questionTitle }: { questionTitle: any }) {
   }, [questionTitle]);
 
   return (
-    <div className="h-screen overflow-y-auto text-gray-100 p-6">
+    <div className="h-[832px] overflow-y-auto text-gray-100 px-6 pb-6">
       <div className="max-w-4xl mx-auto bg-gray-800 rounded-xl shadow-2xl overflow-hidden">
         {/* Header Section */}
         <div className="p-6 border-b border-gray-700 flex items-center justify-between">
