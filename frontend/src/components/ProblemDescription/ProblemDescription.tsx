@@ -42,7 +42,7 @@ function ProblemDescription({ questionTitle }: { questionTitle: any }) {
   }, [questionTitle]);
 
   return (
-    <div className="h-[800px] overflow-y-auto text-gray-100 px-6 pb-5">
+    <div className="h-[800px] overflow-y-auto text-gray-100 pl-6 pr-2 pb-5">
       <div className="max-w-4xl mx-auto bg-gray-800 rounded-xl shadow-2xl overflow-hidden">
         <div className="p-6 border-b border-gray-700 flex items-center justify-between">
           <div>
@@ -76,16 +76,6 @@ function ProblemDescription({ questionTitle }: { questionTitle: any }) {
               <ReactMarkdown>{description || "No description available."}</ReactMarkdown>
             </div>
           )}
-        </div>
-
-        {/* Action Buttons */}
-        <div className="p-6 border-t border-gray-700 flex justify-between items-center">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300">
-            Start Solving
-          </button>
-          <div className="text-gray-500">
-            Solve this problem to improve your skills
-          </div>
         </div>
       </div>
     </div>
