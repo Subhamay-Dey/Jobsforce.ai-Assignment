@@ -29,6 +29,8 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
   const [testCases, setTestCases] = useState<TestCase[]>([]);
   const [description, setDescription] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const [boilerplateCode, setBoilerplateCode] = useState<string | null>(null);
+
 
   const mounted = useMounted();
 
@@ -55,12 +57,47 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
 
     fetchProblemDescription();
   }, [language, questionTitle])
-  
+
   useEffect(() => {
-    const savedCode = localStorage.getItem(`editor-code-${language}`);
-    const newCode = savedCode || LANGUAGE_CONFIG[language].defaultCode;
-    if (editor) editor.setValue(newCode);
-  }, [language, editor]);
+
+    const fetchBoilerplate = async () => {
+      try {
+        // const response = await fetch(`/api/generate-boilerplate?language=${encodeURIComponent(language)}&title=${encodeURIComponent(questionTitle)}&description=${JSON.stringify(description)}&testCases=${JSON.stringify(testCases)}`);
+
+        const response = await fetch(`/api/generate-boilerplate`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            language:language,
+            title: questionTitle,
+            description:description,
+            testCases:testCases,
+          }),
+        });
+
+        const data = await response.json();
+        setBoilerplateCode(data.boilerplate);
+        if (editor && data.boilerplate) {
+          editor.setValue(data.boilerplate); 
+        }
+      } catch (error) {
+        console.error("Error fetching boilerplate:", error);
+      }
+    }
+    if (language && questionTitle && description && testCases.length > 0) {
+      fetchBoilerplate();
+    }
+
+  }, [language, questionTitle, description, testCases, editor]);
+  
+  // useEffect(() => {
+  //   const savedCode = localStorage.getItem(`editor-code-${language}`);
+  //   const newCode = boilerplateCode || savedCode
+
+  //   if (editor) editor.setValue(newCode);
+  // }, [language, editor]);
 
   useEffect(() => {
     const savedFontSize = localStorage.getItem("editor-font-size");
@@ -68,7 +105,7 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
   }, [setFontSize]);
 
   const handleRefresh = () => {
-    const defaultCode = LANGUAGE_CONFIG[language].defaultCode;
+    const defaultCode = boilerplateCode;
     if (editor) editor.setValue(defaultCode);
     localStorage.removeItem(`editor-code-${language}`);
   };
@@ -151,7 +188,7 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
               onChange={handleEditorChange}
               theme={theme}
               beforeMount={defineMonacoThemes}
-              // onMount={(editor) => setEditor(editor)}
+              onMount={(editor) => setEditor(editor)}
               options={{
                 minimap: { enabled: false },
                 fontSize,

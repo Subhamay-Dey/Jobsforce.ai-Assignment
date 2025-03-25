@@ -24,9 +24,13 @@ export async function POST(req: Request) {
       - Follows best practices in ${language}.
       - Includes a function signature with correct parameters.
       - Has a TODO comment for implementation.
+      - DOES NOT include the implementation.
+      - Do not wrap the whole code in backticks.
+      - Only return the function signature and necessary documentation.
 
       Return only the code.
     `;
+
 
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
