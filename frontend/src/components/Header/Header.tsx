@@ -62,7 +62,7 @@ function Header() {
             <div className="flex items-center gap-10">
                 <div className="flex items-center gap-10">
                     <ThemeSelector />
-                    <LanguageSelector/>
+                    <LanguageSelector hasAccess={true}/>
                 </div>
                 <Link
                     href="/pricing"
