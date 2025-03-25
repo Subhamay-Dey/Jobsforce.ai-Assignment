@@ -12,7 +12,7 @@ function DsaQuestion() {
   const {questionTitle} = useParams();
   return (
       <Split 
-      sizes={[35, 65]}
+      sizes={[30, 70]}
       className={styles.split}
       >
           <ProblemDescription questionTitle={questionTitle}/>
