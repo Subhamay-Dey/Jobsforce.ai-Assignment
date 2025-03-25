@@ -10,7 +10,12 @@ import { RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
 import useMounted from "@/hooks/useMounted";
 // import ShareSnippetDialog from "./ShareSnippetDialog";
 
-function EditorPanel() {
+interface TestCase {
+  input: string;
+  output: string;
+}
+
+function EditorPanel({questionTitle}:{questionTitle: any}) {
   const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
   const { language, theme, fontSize, editor, setFontSize, setEditor } = useCodeEditorStore() as {
     language: string;
@@ -21,8 +26,36 @@ function EditorPanel() {
     setEditor: (editor:any) => void;
   };
 
+  const [testCases, setTestCases] = useState<TestCase[]>([]);
+  const [description, setDescription] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+
   const mounted = useMounted();
 
+  useEffect(() => {
+    if (!questionTitle) return;
+
+    const fetchProblemDescription = async () => {
+      try {
+        const response = await fetch(`/api/leetcode?questionName=${encodeURIComponent(questionTitle)}`);
+        const data = await response.json();
+
+        if (data.description) {
+          setDescription(data.description);
+          setTestCases(data.testCases || []);
+        } else {
+          setDescription("Problem not found.");
+        }
+      } catch (error) {
+        setDescription("Error fetching problem.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProblemDescription();
+  }, [language, questionTitle])
+  
   useEffect(() => {
     const savedCode = localStorage.getItem(`editor-code-${language}`);
     const newCode = savedCode || LANGUAGE_CONFIG[language].defaultCode;
@@ -118,7 +151,7 @@ function EditorPanel() {
               onChange={handleEditorChange}
               theme={theme}
               beforeMount={defineMonacoThemes}
-              onMount={(editor) => setEditor(editor)}
+              // onMount={(editor) => setEditor(editor)}
               options={{
                 minimap: { enabled: false },
                 fontSize,
