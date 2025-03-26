@@ -30,7 +30,7 @@ const TestCases = ({ testCases }:{testCases: TestCase[]}) => {
           >
             <div
               className={`font-medium items-center transition-all focus:outline-none inline-flex bg-dark-fill-3 hover:bg-dark-fill-2 relative rounded-lg px-4 py-1 cursor-pointer whitespace-nowrap
-              ${activeTestCaseId === index ? "text-white bg-[#1e1e2e]/50" : "text-gray-500 "}`}
+              ${activeTestCaseId === index ? "text-white bg-[#1e1e2e]/100" : "text-gray-500 "}`}
             >
               Case {index + 1}
             </div>

@@ -7,7 +7,7 @@ function extractHTMLTestCases(html: string) {
   const document = dom.window.document;
 
   const testCases: { input: string; output: string }[] = [];
-  const exampleBlocks = document.querySelectorAll(".example-block"); // Selecting all example divs
+  const exampleBlocks = document.querySelectorAll(".example-block");
 
   exampleBlocks.forEach((block) => {
     const inputEl = block.querySelector(".example-io");

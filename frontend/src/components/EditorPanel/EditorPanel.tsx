@@ -6,8 +6,8 @@ import { Editor, Monaco } from "@monaco-editor/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
-// import { EditorPanelSkeleton } from "./EditorPanelSkeleton";
 import useMounted from "@/hooks/useMounted";
+import EditorPanelSkeleton from "../Skeleton/EditorPanelSkeleton";
 // import ShareSnippetDialog from "./ShareSnippetDialog";
 
 interface TestCase {
@@ -30,7 +30,7 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
   const [description, setDescription] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [boilerplateCode, setBoilerplateCode] = useState<string | null>(null);
-
+  const [isEditorMounted, setIsEditorMounted] = useState(false);
 
   const mounted = useMounted();
 
@@ -81,6 +81,7 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
         setBoilerplateCode(data.boilerplate);
         if (editor && data.boilerplate) {
           editor.setValue(data.boilerplate); 
+          setIsEditorMounted(true);
         }
       } catch (error) {
         console.error("Error fetching boilerplate:", error);
@@ -181,7 +182,9 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
 
         {/* Editor  */}
         <div className="relative h-[680px] group rounded-xl overflow-hidden ring-1 ring-white/[0.05]">
-          
+
+        {!isEditorMounted && <EditorPanelSkeleton />}
+
             <Editor
               height="680px"
               language={LANGUAGE_CONFIG[language].monacoLanguage}
@@ -211,8 +214,6 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
                 },
               }}
             />
-          
-          {/* <EditorPanelSkeleton /> */}
         </div>
       </div>
       {/* {isShareDialogOpen && <ShareSnippetDialog onClose={() => setIsShareDialogOpen(false)} />} */}
