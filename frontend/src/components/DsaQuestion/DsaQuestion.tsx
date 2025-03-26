@@ -13,6 +13,8 @@ function DsaQuestion() {
   return (
       <Split 
       sizes={[28, 72]}
+      gutterSize={8}
+      minSize={0}
       className={styles.split}
       >
           <ProblemDescription questionTitle={questionTitle}/>
