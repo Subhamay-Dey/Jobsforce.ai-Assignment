@@ -46,6 +46,8 @@ function OutputPanel({ questionTitle }: { questionTitle: string }) {
     fetchProblemDescription();
   }, [questionTitle]);
 
+  console.log("Fetched test cases:", testCases);
+
   return (
     <div className="relative bg-[#181825] rounded-xl p-4 mr-4 ring-1 ring-gray-800/50">
 

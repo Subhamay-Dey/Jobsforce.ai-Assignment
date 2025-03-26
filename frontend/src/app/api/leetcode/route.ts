@@ -4,21 +4,17 @@ function extractTestCases(markdown: string) {
   console.log("Raw Markdown Content:\n", markdown); // Log full markdown output
 
   const testCases = [];
-  const regex = /\*\*Example \d+:?\*\*\n*```([\s\S]*?)```/g; // Match example code blocks
+  const regex = /\*\*Input:\*\*\s*(.*?)\n\n\*\*Output:\*\*\s*(.*?)\n\n/gs;
   let match;
 
   while ((match = regex.exec(markdown)) !== null) {
-    console.log("Extracted Raw Test Case Block:\n", match[1]); // Log extracted example content
+    console.log("Extracted Raw Test Case Block:\n", match[0]); // Log extracted example content
 
-    const inputMatch = match[1].match(/Input:\s*(.*)/);
-    const outputMatch = match[1].match(/Output:\s*(.*)/);
+    const input = match[1].trim();
+    const output = match[2].trim();
+    testCases.push({ input, output });
 
-    if (inputMatch && outputMatch) {
-      const input = inputMatch[1].trim();
-      const output = outputMatch[1].trim();
-      testCases.push({ input, output });
-      console.log("Parsed Test Case:", { input, output });
-    }
+    console.log("Parsed Test Case:", { input, output });
   }
 
   console.log("Final Extracted Test Cases:", testCases);

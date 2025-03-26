@@ -5,10 +5,6 @@ interface TestCase {
   output: string;
 }
 
-interface TestCasesProps {
-  testCases: TestCase[];
-}
-
 const TestCases = ({ testCases }:{testCases: TestCase[]}) => {
   const [activeTestCaseId, setActiveTestCaseId] = useState(0);
 
