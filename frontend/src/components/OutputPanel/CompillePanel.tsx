@@ -1,6 +1,8 @@
 import { useCompileStore } from '@/store/useCompileStore';
+import axios from 'axios';
 import { Clock } from 'lucide-react'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { getLanguageId } from './LanguagetoId';
 
 function CompillePanel() {
 
@@ -9,6 +11,38 @@ function CompillePanel() {
   console.log("New Code:", newCode);
   console.log("Compile Test Cases:", compiletestCases);
 
+  useEffect(() => {
+    const handleRunCode = async () => {
+      if (!compilelanguage || !newCode || compiletestCases.length === 0) {
+        console.warn('Missing data, not sending request');
+        return;
+      }
+
+      const language_id = getLanguageId(compilelanguage);
+      if (!language_id) {
+        console.error('Invalid language:', compilelanguage);
+        return;
+      }
+
+      try {
+        const response = await axios.post('/api/judge0-submit-code', {
+          code: newCode,
+          language_id:language_id,
+          test_cases: compiletestCases.map(({ input, output }) => ({
+            input,
+            expected_output: output,
+          })),
+        });
+
+        console.log('Judge0 API Response:', response.data);
+      } catch (error) {
+        console.error('Error while sending code to Judge0:', error);
+      }
+    };
+
+    handleRunCode();
+  }, [compilelanguage, newCode, compiletestCases]);
+  
   return (
     <div className="relative">
     <div className="relative bg-[#1e1e2e]/50 backdrop-blur-sm border border-[#313244] 

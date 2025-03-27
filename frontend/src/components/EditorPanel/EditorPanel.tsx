@@ -247,7 +247,9 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
               }}
             />
         </div>
-        <RunButton onRun={handleRunCode}/>
+        <div className="relative h-4 w-full flex items-center justify-end">
+          <RunButton onRun={handleRunCode}/>
+        </div>
       </div>
       {/* {isShareDialogOpen && <ShareSnippetDialog onClose={() => setIsShareDialogOpen(false)} />} */}
     </div>

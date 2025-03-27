@@ -19,7 +19,7 @@ function RunButton({ onRun }: RunCodeButtonProps) {
           whileTap={{ scale: 0.95 }}
           // onClick={handleRunCode}
           onClick={onRun}
-          className="mt-4 w-full bg-blue-600 text-white p-2 rounded-lg flex items-center justify-center gap-2"
+          className="mt-4 w-30 bg-blue-600 text-white p-2 rounded-lg flex items-center justify-center gap-2"
         >
           <PlayIcon className="w-5 h-5" />
           Run Code
