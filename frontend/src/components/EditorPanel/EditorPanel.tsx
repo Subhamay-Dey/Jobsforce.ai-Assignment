@@ -8,6 +8,7 @@ import Image from "next/image";
 import { RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
 import useMounted from "@/hooks/useMounted";
 import EditorPanelSkeleton from "../Skeleton/EditorPanelSkeleton";
+import CompillePanel from "../OutputPanel/CompillePanel";
 // import ShareSnippetDialog from "./ShareSnippetDialog";
 
 interface TestCase {
@@ -31,7 +32,7 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
   const [loading, setLoading] = useState<boolean>(true);
   const [boilerplateCode, setBoilerplateCode] = useState<string | null>(null);
   const [isEditorMounted, setIsEditorMounted] = useState(false);
-
+  const [editorValue, setEditorValue] = useState<string | undefined>();
   const mounted = useMounted();
 
   useEffect(() => {
@@ -62,8 +63,6 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
 
     const fetchBoilerplate = async () => {
       try {
-        // const response = await fetch(`/api/generate-boilerplate?language=${encodeURIComponent(language)}&title=${encodeURIComponent(questionTitle)}&description=${JSON.stringify(description)}&testCases=${JSON.stringify(testCases)}`);
-
         const response = await fetch(`/api/generate-boilerplate`, {
           method: "POST",
           headers: {
@@ -92,13 +91,6 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
     }
 
   }, [language, questionTitle, description, testCases, editor]);
-  
-  // useEffect(() => {
-  //   const savedCode = localStorage.getItem(`editor-code-${language}`);
-  //   const newCode = boilerplateCode || savedCode
-
-  //   if (editor) editor.setValue(newCode);
-  // }, [language, editor]);
 
   useEffect(() => {
     const savedFontSize = localStorage.getItem("editor-font-size");
@@ -113,6 +105,7 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
 
   const handleEditorChange = (value: string | undefined) => {
     if (value) localStorage.setItem(`editor-code-${language}`, value);
+    setEditorValue(value);
   };
 
   const handleFontSizeChange = (newSize: number) => {

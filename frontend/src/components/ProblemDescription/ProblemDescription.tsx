@@ -8,6 +8,7 @@ function ProblemDescription({ questionTitle }: { questionTitle: any }) {
   const [description, setDescription] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [difficulty, setDifficulty] = useState<'Easy' | 'Medium' | 'Hard'>('Medium');
+  const [isProblemMounted, setIsProblemMounted] = useState(false);
 
   const difficultyColors = {
     Easy: 'text-green-500',
@@ -25,8 +26,8 @@ function ProblemDescription({ questionTitle }: { questionTitle: any }) {
         if (data.description) {
           const markdown = htmlToMd(data.description);
           setDescription(markdown);
-          
           setDifficulty(data.difficulty);
+          setIsProblemMounted(true);
         } else {
           setDescription("Problem not found.");
         }
@@ -62,11 +63,18 @@ function ProblemDescription({ questionTitle }: { questionTitle: any }) {
         {/* Description Section */}
         <div className="p-6">
           {loading ? (
-            <div className="animate-pulse flex space-x-4">
-              <div className="flex-1 space-y-4">
-                <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-                <div className="h-4 bg-gray-700 rounded"></div>
-                <div className="h-4 bg-gray-700 rounded w-5/6"></div>
+            <div className="relative rounded-xl overflow-hidden ring-1 ring-white/[0.05]">
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5" />
+              <div className="h-[600px] bg-[#1e1e2e]/50 backdrop-blur-sm p-4">
+                  {[...Array(15)].map((_, i) => (
+                  <div key={i} className="flex items-center gap-4 mb-3">
+                      <div className={`w-12 h-4 bg-white/5 rounded`} />
+                      <div
+                      className={`h-4 bg-gray-700 rounded`}
+                      style={{ width: `${Math.random() * 60 + 20}%` }}
+                      />
+                  </div>
+                  ))}
               </div>
             </div>
           ) : (

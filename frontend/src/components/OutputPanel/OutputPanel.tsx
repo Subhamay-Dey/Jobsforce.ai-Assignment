@@ -8,6 +8,7 @@ import CompillePanel from "./CompillePanel";
 import TestCases from "./TestCases";
 import styles from "./styles.module.scss"
 import OutputPannelHeader from "./OutputPannelHeader";
+// import { useCodeEditorStore } from "@/store/useCodeEditorStore";
 
 interface TestCase {
   input: string;
@@ -19,6 +20,12 @@ function OutputPanel({ questionTitle }: { questionTitle: string }) {
   const [loading, setLoading] = useState<boolean>(true);
   const [difficulty, setDifficulty] = useState<"Easy" | "Medium" | "Hard">("Medium");
   const [testCases, setTestCases] = useState<TestCase[]>([]);
+
+  // const [isTestCase, setIsTestCase] = useState<boolean>(false)
+  // const {testCasesMounted, setTestCasesMounted} = useCodeEditorStore((state:any) => ({
+  //   testCasesMounted: state.isTestCase,
+  //   setTestCasesMounted: state.setIsTestCase,
+  // }))
 
   useEffect(() => {
     if (!questionTitle) return;
@@ -33,6 +40,7 @@ function OutputPanel({ questionTitle }: { questionTitle: string }) {
           setDescription(markdown);
           setDifficulty(data.difficulty);
           setTestCases(data.testCases || []);
+          // setIsTestCase(true);
         } else {
           setDescription("Problem not found.");
         }

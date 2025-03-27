@@ -1,0 +1,10 @@
+services:
+  db:
+    image: postgres:16.2
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: bdvnivnjnvjcnbjndxfbkfnbkxcnfbnm  # 👈 Set a password
+      POSTGRES_DB: judge0
+    ports:
+      - "5432:5432"

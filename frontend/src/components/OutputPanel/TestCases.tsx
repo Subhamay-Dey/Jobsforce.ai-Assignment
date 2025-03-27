@@ -1,3 +1,4 @@
+// import { useCodeEditorStore } from '@/store/useCodeEditorStore';
 import React, { useState } from 'react';
 
 interface TestCase {
@@ -7,6 +8,8 @@ interface TestCase {
 
 const TestCases = ({ testCases }:{testCases: TestCase[]}) => {
   const [activeTestCaseId, setActiveTestCaseId] = useState(0);
+
+  // const isTestCaseMounted = useCodeEditorStore((state:any)=> state.testCasesMounted);
 
   return (
     <div className="relative">
@@ -38,7 +41,6 @@ const TestCases = ({ testCases }:{testCases: TestCase[]}) => {
         ))}
       </div>
 
-      {/* Active Test Case Details */}
       {testCases.length > 0 && (
         <div className='font-semibold my-4'>
           <p className='text-sm font-medium mt-4 text-white'>Input:</p>
@@ -51,6 +53,7 @@ const TestCases = ({ testCases }:{testCases: TestCase[]}) => {
           </div>
         </div>
       )}
+      
     </div>
     </div>
   );

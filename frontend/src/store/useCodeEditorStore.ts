@@ -155,6 +155,7 @@ export const useCodeEditorStore = create<CodeEditorState>((set:any, get:any) => 
         set({ isRunning: false });
       }
     },
+    // setTestCasesMounted: (isMounted: boolean) => set({ testCasesMounted: isMounted}),
   };
 });
 
