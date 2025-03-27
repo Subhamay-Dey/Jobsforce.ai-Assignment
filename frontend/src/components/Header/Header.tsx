@@ -75,7 +75,7 @@ function Header() {
                         Pro
                     </span>
                 </Link>
-                <RunButton/>
+                {/* <RunButton/> */}
                 <div className='pl-5 border-l border-gray-800'>
                     <AvatarUI/>
                 </div>

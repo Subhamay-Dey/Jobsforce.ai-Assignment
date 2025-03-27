@@ -10,6 +10,9 @@ import useMounted from "@/hooks/useMounted";
 import EditorPanelSkeleton from "../Skeleton/EditorPanelSkeleton";
 import CompillePanel from "../OutputPanel/CompillePanel";
 import { useCompileStore } from "@/store/useCompileStore";
+// import RunButton from "../Header/Common/RunButton";
+// import { useRunCodeStore } from "@/store/useRunCodeStore";
+import RunButton from "../Header/Common/RunButton";
 // import ShareSnippetDialog from "./ShareSnippetDialog";
 
 interface TestCase {
@@ -41,6 +44,8 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
     setNewCode: (newCode: string | undefined) => void,
     setCompileTestCases: (compiletestCases: { input: string; output: string }[]) => void
   }
+
+  // const { setHandleRunCode } = useRunCodeStore();
 
   useEffect(() => {
     if (!questionTitle) return;
@@ -134,7 +139,7 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
     localStorage.setItem("editor-font-size", size.toString());
   };
 
-    const handleRunCode = () => {
+  const handleRunCode = () => {
     if (!language || !editorValue || testCases.length === 0) {
       alert("Please write some code and ensure test cases are available.");
       return;
@@ -143,6 +148,10 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
     setNewCode(editorValue);
     setCompileTestCases(testCases);
   };
+
+  // useEffect(() => {
+  //   setHandleRunCode(() => handleRunCode);
+  // }, [handleRunCode]); 
 
   if (!mounted) return null;
 
@@ -238,16 +247,7 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
               }}
             />
         </div>
-        {/* Run Code Button */}
-          <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={handleRunCode}
-          className="mt-4 w-full bg-blue-600 text-white p-2 rounded-lg flex items-center justify-center gap-2"
-        >
-          <PlayIcon className="w-5 h-5" />
-          Run Code
-        </motion.button>
+        <RunButton onRun={handleRunCode}/>
       </div>
       {/* {isShareDialogOpen && <ShareSnippetDialog onClose={() => setIsShareDialogOpen(false)} />} */}
     </div>

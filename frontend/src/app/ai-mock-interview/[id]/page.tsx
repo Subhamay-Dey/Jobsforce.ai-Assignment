@@ -48,7 +48,6 @@ const AiMockInterview = () => {
         setLoading(true);
         const response = await axios.get(`http://localhost:8000/api/ai-interview/${jobId}`);
         
-        // Add a category and status property to each question
         const questionsWithCategory = response.data.questions.map((q: Question) => ({
           ...q,
           category: determineCategoryFromQuestion(q),
@@ -70,7 +69,6 @@ const AiMockInterview = () => {
     }
   }, [jobId]);
 
-  // A helper function to determine question category based on title/description
   const determineCategoryFromQuestion = (question: Question) => {
     const title = question.title.toLowerCase();
     const description = question.description.toLowerCase();
@@ -132,7 +130,6 @@ const AiMockInterview = () => {
 
   return (
     <div className="container mx-auto p-4">
-      {/* Keep the original header card */}
       <Card className="mb-8">
         <CardHeader>
           <CardTitle className="text-2xl">AI Technical Interview</CardTitle>
@@ -154,10 +151,9 @@ const AiMockInterview = () => {
         </CardContent>
       </Card>
 
-      {/* LeetCode-style table */}
       <div className="overflow-x-auto">
         <table className="w-full text-sm text-left">
-          <thead className="bg-gray-100">
+          <thead className="bg-[#1e1e2e]/100">
             <tr>
               <th className="px-2 py-3 text-center w-10">Status</th>
               <th className="px-6 py-3">Title</th>
@@ -170,7 +166,7 @@ const AiMockInterview = () => {
             {questions.map((question, idx) => (
               <tr 
                 key={question.id} 
-                className={`border-b hover:bg-gray-50 cursor-pointer ${idx % 2 === 1 ? 'bg-gray-50' : ''}`}
+                className={`border-b hover:bg-[#1e1e2e]/100 cursor-pointer ${idx % 2 === 1 ? 'bg-[#1e1e2e]/100' : ''}`}
                 // onClick={() => setSelectedQuestion(question)}
                 onClick={() => window.open(`/ai-mock-interview/dsa/${question.title.replace(/\s+/g, "-")}`,`_blank`)}
               >
