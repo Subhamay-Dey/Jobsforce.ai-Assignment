@@ -1,7 +1,14 @@
+import { useCompileStore } from '@/store/useCompileStore';
 import { Clock } from 'lucide-react'
 import React from 'react'
 
 function CompillePanel() {
+
+  const { compilelanguage, newCode, compiletestCases } = useCompileStore();
+  console.log("Compile Language:", compilelanguage);
+  console.log("New Code:", newCode);
+  console.log("Compile Test Cases:", compiletestCases);
+
   return (
     <div className="relative">
     <div className="relative bg-[#1e1e2e]/50 backdrop-blur-sm border border-[#313244] 

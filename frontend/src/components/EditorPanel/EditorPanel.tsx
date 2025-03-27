@@ -9,6 +9,7 @@ import { RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
 import useMounted from "@/hooks/useMounted";
 import EditorPanelSkeleton from "../Skeleton/EditorPanelSkeleton";
 import CompillePanel from "../OutputPanel/CompillePanel";
+import { useCompileStore } from "@/store/useCompileStore";
 // import ShareSnippetDialog from "./ShareSnippetDialog";
 
 interface TestCase {
@@ -34,6 +35,8 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
   const [isEditorMounted, setIsEditorMounted] = useState(false);
   const [editorValue, setEditorValue] = useState<string | undefined>();
   const mounted = useMounted();
+
+  const {setCompileLanguage, setNewCode, setCompileTestCases} = useCompileStore()
 
   useEffect(() => {
     if (!questionTitle) return;
@@ -93,6 +96,18 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
   }, [language, questionTitle, description, testCases, editor]);
 
   useEffect(() => {
+    if (language) {
+      setCompileLanguage(language);
+    }
+  }, [language, setCompileLanguage]);
+
+  useEffect(() => {
+    if (testCases.length > 0) {
+      setCompileTestCases(testCases);
+    }
+  }, [testCases, setCompileTestCases]);
+
+  useEffect(() => {
     const savedFontSize = localStorage.getItem("editor-font-size");
     if (savedFontSize) setFontSize(parseInt(savedFontSize));
   }, [setFontSize]);
@@ -104,8 +119,10 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
   };
 
   const handleEditorChange = (value: string | undefined) => {
+    const newValue = value ?? "";
     if (value) localStorage.setItem(`editor-code-${language}`, value);
     setEditorValue(value);
+    setNewCode(newValue);
   };
 
   const handleFontSizeChange = (newSize: number) => {
