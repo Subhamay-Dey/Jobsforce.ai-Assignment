@@ -5,7 +5,7 @@ import { defineMonacoThemes, LANGUAGE_CONFIG } from "../../constants/index";
 import { Editor, Monaco } from "@monaco-editor/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
+import { PlayIcon, RotateCcwIcon, ShareIcon, TypeIcon } from "lucide-react";
 import useMounted from "@/hooks/useMounted";
 import EditorPanelSkeleton from "../Skeleton/EditorPanelSkeleton";
 import CompillePanel from "../OutputPanel/CompillePanel";
@@ -36,7 +36,11 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
   const [editorValue, setEditorValue] = useState<string | undefined>();
   const mounted = useMounted();
 
-  const {setCompileLanguage, setNewCode, setCompileTestCases} = useCompileStore()
+  const {setCompileLanguage, setNewCode, setCompileTestCases} = useCompileStore() as {
+    setCompileLanguage: (compilelanguage: string) => void,
+    setNewCode: (newCode: string | undefined) => void,
+    setCompileTestCases: (compiletestCases: { input: string; output: string }[]) => void
+  }
 
   useEffect(() => {
     if (!questionTitle) return;
@@ -119,16 +123,25 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
   };
 
   const handleEditorChange = (value: string | undefined) => {
-    const newValue = value ?? "";
     if (value) localStorage.setItem(`editor-code-${language}`, value);
     setEditorValue(value);
-    setNewCode(newValue);
+    setNewCode(value);
   };
 
   const handleFontSizeChange = (newSize: number) => {
     const size = Math.min(Math.max(newSize, 10), 21);
     setFontSize(size);
     localStorage.setItem("editor-font-size", size.toString());
+  };
+
+    const handleRunCode = () => {
+    if (!language || !editorValue || testCases.length === 0) {
+      alert("Please write some code and ensure test cases are available.");
+      return;
+    }
+    setCompileLanguage(language);
+    setNewCode(editorValue);
+    setCompileTestCases(testCases);
   };
 
   if (!mounted) return null;
@@ -225,6 +238,16 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
               }}
             />
         </div>
+        {/* Run Code Button */}
+          <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={handleRunCode}
+          className="mt-4 w-full bg-blue-600 text-white p-2 rounded-lg flex items-center justify-center gap-2"
+        >
+          <PlayIcon className="w-5 h-5" />
+          Run Code
+        </motion.button>
       </div>
       {/* {isShareDialogOpen && <ShareSnippetDialog onClose={() => setIsShareDialogOpen(false)} />} */}
     </div>

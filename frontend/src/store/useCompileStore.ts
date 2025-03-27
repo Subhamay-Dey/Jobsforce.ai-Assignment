@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 interface CompileState {
   compilelanguage: string;
-  newCode: string;
+  newCode: string | undefined;
   compiletestCases: { input: string; output: string }[];
   setCompileLanguage: (compilelanguage: string) => void;
   setNewCode: (code: string) => void;
