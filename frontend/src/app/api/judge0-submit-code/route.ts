@@ -6,7 +6,7 @@ export async function POST(req: Request) {
     try {
         const { code, language_id, test_cases } = await req.json();
 
-        const submissionPromises = test_cases.map(async ({ input, expected_output }: { input: string; expected_output: string }) => {
+        const submissionPromises = test_cases.map(async ({ input, expected_output }: { input: any; expected_output: any }) => {
             const response = await fetch(JUDGE0_URL, {
                 method: "POST",
                 headers: {
@@ -17,8 +17,8 @@ export async function POST(req: Request) {
                 body: JSON.stringify({
                     language_id,
                     source_code: Buffer.from(code).toString("base64"), // Encode to Base64
-                    stdin: Buffer.from(input).toString("base64"), // Encode input
-                    expected_output: Buffer.from(expected_output).toString("base64"), // Encode expected output
+                    // stdin: Buffer.from(input).toString("base64"), // Encode input
+                    // expected_output: Buffer.from(expected_output).toString("base64"), // Encode expected output
                 }),
             });
 
@@ -28,8 +28,8 @@ export async function POST(req: Request) {
         const submissionResults = await Promise.all(submissionPromises);
         const tokens = submissionResults.map((res) => res.token);
 
-        const resultsPromises = tokens.map(async (token) => {
-            const response = await fetch(`${JUDGE0_URL}/${token}?fields=*`, {
+        const resultsPromises = tokens.map(async (tokens) => {
+            const response = await fetch(`${JUDGE0_URL}/${tokens}?fields=*`, {
                 method: "GET",
                 headers: {
                     "x-rapidapi-key": RAPIDAPI_KEY,

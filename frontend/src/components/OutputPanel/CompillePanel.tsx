@@ -25,11 +25,24 @@ function CompillePanel() {
       }
 
       try {
-        const response = await axios.post('/api/judge0-submit-code', {
+
+        const cleanResponse = await axios.post('/api/remove-comments', {
           code: newCode,
-          language_id:language_id,
+          language: compilelanguage,
+        });
+
+        if (cleanResponse.data.error) {
+          console.error("Error in comment removal:", cleanResponse.data.error);
+          return;
+        }
+
+        const cleanedCode = cleanResponse.data.cleanedCode;
+
+        const response = await axios.post('/api/judge0-submit-code', {
+          code: cleanedCode,
+          language_id,
           test_cases: compiletestCases.map(({ input, output }) => ({
-            input,
+            input: input,
             expected_output: output,
           })),
         });
