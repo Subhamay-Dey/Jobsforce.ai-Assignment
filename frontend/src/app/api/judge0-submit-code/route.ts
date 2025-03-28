@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 const JUDGE0_URL = process.env.JUDGE0_URL!
-const RAPIDAPI_KEY = "f05a609a59msh363230c20bce9bap1fcc7ejsn164fab2f42b6";
+const RAPIDAPI_KEY = process.env.RAPIDAPI_KEY!;
 export async function POST(req: Request) {
     try {
         const { code, language_id, test_cases } = await req.json();
