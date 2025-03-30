@@ -21,7 +21,7 @@ function CompillePanel() {
       const language_id = getLanguageId(compilelanguage);
       if (!language_id) {
         console.error('Invalid language:', compilelanguage);
-        return;
+        return
       }
 
       try {
