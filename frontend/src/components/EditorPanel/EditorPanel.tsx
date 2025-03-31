@@ -17,7 +17,7 @@ import RunButton from "../Header/Common/RunButton";
 
 interface TestCase {
   input: string;
-  output: string;
+  expectedOutput: string;
 }
 
 function EditorPanel({questionTitle}:{questionTitle: any}) {
@@ -42,7 +42,7 @@ function EditorPanel({questionTitle}:{questionTitle: any}) {
   const {setCompileLanguage, setNewCode, setCompileTestCases} = useCompileStore() as {
     setCompileLanguage: (compilelanguage: string) => void,
     setNewCode: (newCode: string | undefined) => void,
-    setCompileTestCases: (compiletestCases: { input: string; output: string }[]) => void
+    setCompileTestCases: (compiletestCases: { input: string; expectedOutput: string }[]) => void
   }
 
   // const { setHandleRunCode } = useRunCodeStore();

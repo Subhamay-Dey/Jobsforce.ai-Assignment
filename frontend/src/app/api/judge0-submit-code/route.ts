@@ -17,8 +17,8 @@ export async function POST(req: Request) {
                 body: JSON.stringify({
                     language_id,
                     source_code: Buffer.from(code).toString("base64"), // Encode to Base64
-                    // stdin: Buffer.from(input).toString("base64"), // Encode input
-                    // expected_output: Buffer.from(expected_output).toString("base64"), // Encode expected output
+                    stdin: Buffer.from(input).toString("base64"), // Encode input
+                    expected_output: Buffer.from(expected_output).toString("base64"), // Encode expected output
                 }),
             });
 

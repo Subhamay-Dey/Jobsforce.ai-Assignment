@@ -23,14 +23,13 @@ export async function POST(req: Request) {
       - Matches the input/output structure from test cases.
       - Follows best practices in ${language}.
       - Includes a function signature with correct parameters.
-      - Has a TODO comment for implementation with mentioning the current language
+      - Dont give any comments in the code, I just need only the code.
       - DOES NOT include the implementation.
       - Do not wrap the whole code in backticks.
       - Only return the function signature and necessary documentation.
 
       Return only the code.
     `;
-
 
     const response = await openai.chat.completions.create({
       model: "gpt-4o-mini",
