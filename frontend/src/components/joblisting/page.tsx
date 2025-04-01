@@ -58,7 +58,7 @@ const JobListings = () => {
                 <img src={job.organization_logo} alt={job.organization} className="flex justify-center items-center max-h-12 max-w-20"/>
               </div>
             )}
-            <h3 className="text-xl font-semibold">{job.title}</h3>
+            <h3 className="text-xl text-black font-semibold">{job.title}</h3>
             <p className="text-gray-600 text-sm">Posted on: {job.date_posted}</p>
             <p className="text-gray-700 text-sm mt-1 font-medium">{job.organization}</p>
             <p className="mt-2 text-gray-700 text-sm">
