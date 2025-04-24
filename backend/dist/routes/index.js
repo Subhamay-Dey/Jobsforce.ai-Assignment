@@ -25,7 +25,7 @@ router.get("/ai-interview/:jobId", async (req, res) => {
         console.log("Job info:", jobInfo);
         // Call OpenAI API to generate questions
         const openAIResponse = await axios.post("https://api.openai.com/v1/chat/completions", {
-            model: "gpt-4-turbo",
+            model: "gpt-4o-mini",
             messages: [
                 {
                     role: "system",

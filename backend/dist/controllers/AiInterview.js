@@ -29,4 +29,5 @@ class AiInterview {
         }
     }
 }
+
 export default AiInterview;

@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
 
     // Call OpenAI to reformat the code
     const aiResponse = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-4o-mini",
       messages: [
         { role: "system", content: `You are an expert code formatter. Format the given ${language} code into a structured program while preserving its logic.` },
         { role: "user", content: `Format the following ${language} code:\n${code}` },
